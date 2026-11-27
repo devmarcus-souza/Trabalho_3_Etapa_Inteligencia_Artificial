@@ -1,0 +1,76 @@
+Modelo: qwen2.5-coder:7b
+Prompt: Escreva um algoritmo de ordenação Bubble Sort em C bem documentado.
+Temperatura: 1.5
+top_p: 0.9
+num_predict: 1000
+
+Resposta gerada:
+Aqui está um exemplo de implementação do algoritmo de ordenação Bubble Sort em C com comentários explicando cada parte:
+
+```c
+#include <stdio.h>
+
+// Função para realizar a troca entre dois elementos de um array
+void troca(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Função que implementa o algoritmo de Bubble Sort
+void bubbleSort(int arr[], int n) {
+    int i, j;
+    // O loop externo percorre todo o array
+    for (i = 0; i < n-1; i++) {
+        // O loop interno compara elementos adjacentes e realiza a troca se necessário
+        for (j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                troca(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+// Função auxiliar para imprimir o array
+void imprimeArray(int arr[], int size) {
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Função principal para testar o Bubble Sort
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    printf("Array original:\n");
+    imprimeArray(arr, n);
+    bubbleSort(arr, n);
+    printf("\nArray ordenado usando Bubble Sort:\n");
+    imprimeArray(arr, n);
+    return 0;
+}
+```
+
+### Explicação do Código:
+
+1. **Função `troca`**:
+   - Esta função troca os valores de duas variáveis usando uma variável temporária.
+
+2. **Função `bubbleSort`**:
+   - A função `bubbleSort` implementa o algoritmo de Bubble Sort.
+   - Ela percorre o array várias vezes (número de vezes = número de elementos do array).
+   - Cada passo interno do algoritmo compara um par de elementos adjacentes e as troca se estiverem em ordem incorreta.
+   - A cada iteração externa, o maior elemento "bolha" para o final do array.
+
+3. **Função `imprimeArray`**:
+   - Esta função imprime os elementos de um array separados por espaços.
+
+4. **Função `main`**:
+   - O código `main` define um array, imprime o array original, chama a função `bubbleSort` para ordenar o array e, por fim, imprime o array ordenado.
+
+### Como Usar:
+- Compile e execute o programa.
+- Você verá o array original e o array ordenado no console.
+
+Este código é um exemplo básico de Bubble Sort em C. É simples e fácil de entender, embora não seja a melhor escolha para grandes conjuntos de dados devido à sua complexidade de tempo O(n^2).

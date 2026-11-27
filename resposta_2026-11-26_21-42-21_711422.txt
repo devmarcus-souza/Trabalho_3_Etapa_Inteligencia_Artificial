@@ -1,0 +1,98 @@
+Modelo: qwen2.5-coder:7b
+Prompt: Escreva um algoritmo de ordenação Bubble Sort em C bem documentado.
+Temperatura: 0.9
+top_p: 0.9
+num_predict: 1000
+
+Resposta gerada:
+Claro! Aqui está um algoritmo de ordenação Bubble Sort em C bem documentado:
+
+```c
+#include <stdio.h>
+
+/**
+ * Implementação do algoritmo de ordenação Bubble Sort.
+ *
+ * @param arr O array a ser ordenado.
+ * @param n O número de elementos no array.
+ */
+void bubbleSort(int arr[], int n) {
+    // Variável auxiliar para controlar se houve trocas no último passo
+    int trocou;
+
+    // Percorre o array do início ao penúltimo elemento
+    for (int i = 0; i < n - 1; i++) {
+        // Assume que houve trocas no primeiro passo
+        trocou = 0;
+
+        // Percorre o array do início ao último não ordenado
+        for (int j = 0; j < n - 1 - i; j++) {
+            // Se o elemento atual é maior que o próximo, troca-os
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+
+                // Indica que houve uma troca
+                trocou = 1;
+            }
+        }
+
+        // Se não houve trocas no último passo, o array já está ordenado
+        if (trocou == 0) {
+            break;
+        }
+    }
+}
+
+/**
+ * Função auxiliar para imprimir um array.
+ *
+ * @param arr O array a ser impresso.
+ * @param size O tamanho do array.
+ */
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Array original: \n");
+    printArray(arr, n);
+
+    bubbleSort(arr, n);
+
+    printf("\nArray ordenado: \n");
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+### Explicação do Código:
+
+1. **Função `bubbleSort`**:
+   - Recebe um array `arr` e seu tamanho `n`.
+   - Usa dois loops aninhados para percorrer o array e comparar pares de elementos adjacentes.
+   - Se um elemento é maior que o próximo, eles são trocados.
+   - Se não houver trocas no último passo, o array já está ordenado e o algoritmo encerra.
+
+2. **Função `printArray`**:
+   - Recebe um array `arr` e seu tamanho `size`.
+   - Imprime os elementos do array separados por espaço.
+
+3. **Função `main`**:
+   - Define um array de exemplo.
+   - Chama a função `bubbleSort` para ordenar o array.
+   - Imprime o array original e o array ordenado.
+
+### Documentação:
+- A documentação é fornecida para cada função, explicando o propósito e os parâmetros.
+- Os comentários adicionais explicam os passos e a lógica do algoritmo.
+
+Este código é um exemplo claro e bem documentado de como implementar o algoritmo Bubble Sort em C.
